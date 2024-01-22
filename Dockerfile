@@ -1,4 +1,5 @@
 FROM dpage/pgadmin4 as pgadmin4
+USER root 
 RUN adduser -S user  -G root 
 RUN chown user:root /pgadmin4 && \
     sed -i 's/5050/1000720000/g' /etc/passwd && \
