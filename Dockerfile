@@ -1,8 +1,8 @@
-FROM dpage/pgadmin4 as pgadmin4
-
+FROM dpage/pgadmin4 
 RUN adduser -S user  -G root
 
-RUN user:root /pgadmin4 && \
+USER user
+RUN user /pgadmin4 && \
     sed -i 's/5050/user/g' /etc/passwd && \
     sed -i 's/5050/user/g' /etc/group && \
     find / -user 5050 -exec chown user {} \; && \
