@@ -1,5 +1,6 @@
 FROM dpage/pgadmin4 as pgadmin4
 
+RUN adduser -S user  -G root
 
 RUN user:root /pgadmin4 && \
     sed -i 's/5050/user/g' /etc/passwd && \
