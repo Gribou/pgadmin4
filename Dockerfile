@@ -6,7 +6,8 @@ RUN sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/jammy p
 RUN apt-get --allow-insecure-repositories -y update
 RUN apt-get --allow-unauthenticated -y install pgadmin4
 
-RUN adduser --group sudo user
+RUN adduser user
+RUN adduser user sudo
 USER user
 WORKDIR /home/user
 CMD ["sh", "-c", "tail -f /dev/null"]
