@@ -4,7 +4,7 @@ RUN apt-get update
 RUN apt install -y ca-certificates
 RUN sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/jammy pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt-get --allow-unauthenticated update'
 
-RUN apt install pgadmin4
+RUN apt-get --allow-unauthenticated install pgadmin4
 RUN adduser -S user  -G root
 USER user
 WORKDIR /home/user
