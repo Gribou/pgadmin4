@@ -8,6 +8,7 @@ RUN apt-get --allow-unauthenticated -y install pgadmin4
 
 RUN adduser user
 RUN adduser user sudo
+RUN chmod 777 /usr/pgadmin4/bin/*
 USER user
 WORKDIR /home/user
 CMD ["sh", "-c", "tail -f /dev/null"]
