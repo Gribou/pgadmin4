@@ -1,14 +1,16 @@
-FROM ubuntu:latest
+FROM dpage/pgadmin4 as pgadmin4
 
-RUN apt-get update
-RUN apt install -y ca-certificates
-RUN sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/jammy pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list'
-RUN apt-get --allow-insecure-repositories -y update
-RUN apt-get --allow-unauthenticated -y install pgadmin4
+USER root 
+RUN chown 1000780000:1000780000 /pgadmin4 && \
+    sed -i 's/5050/1000780000/g' /etc/passwd && \
+    sed -i 's/5050/1000780000/g' /etc/group && \
+    find / -user 5050 -exec chown 1000780000 {} \; && \
+    find / -group 5050 -exec chown :1000780000 {} \; && \
+    sed 's@python /run_pgadmin.py@python /pgadmin4/run_pgadmin.py@g' /entrypoint.sh
 
-RUN adduser user
-RUN adduser user sudo
-RUN chown user:root /usr/pgadmin4/bin/*
-USER user
-WORKDIR /home/user
-CMD ["sh", "-c", "tail -f /dev/null"]
+USER 1000780000
+
+VOLUME /var/lib/pgadmin
+EXPOSE 80 443
+
+ENTRYPOINT ["/entrypoint.sh"]
