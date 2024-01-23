@@ -1,5 +1,7 @@
-FROM dpage/pgadmin4:latest
+FROM ubuntu:latest
 
-USER 0
+RUN apt-get update
 
-USER pgadmin
+
+RUN apt install pgadmin4
+
