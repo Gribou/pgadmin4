@@ -5,8 +5,8 @@ RUN adduser user
 #
 # Setup the repository
 #
-RUN sudo apt install curl
-RUN sudo apt install sudo
+RUN  apt install curl
+RUN  apt install sudo
 
 
 # Install the public key for the repository (if not done previously):
