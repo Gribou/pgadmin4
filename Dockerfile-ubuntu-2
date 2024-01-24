@@ -1,5 +1,6 @@
 FROM ubuntu:latest
 
+RUN adduser user
 
 #
 # Setup the repository
@@ -23,3 +24,9 @@ RUN sudo apt install pgadmin4-web
 
 # Configure the webserver, if you installed pgadmin4-web:
 sudo /usr/pgadmin4/bin/setup-web.sh
+
+
+
+USER user
+WORKDIR /home/user
+CMD ["sh", "-c", "tail -f /dev/null"]
