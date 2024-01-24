@@ -5,6 +5,9 @@ RUN adduser user
 #
 # Setup the repository
 #
+RUN sudo apt install curl
+RUN sudo apt install sudo
+
 
 # Install the public key for the repository (if not done previously):
 RUN curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
