@@ -5,8 +5,8 @@ RUN apt update
 #
 # Setup the repository
 #
-RUN  apt install curl
-RUN  apt install sudo
+RUN  apt install -y curl
+RUN  apt install -y sudo
 
 
 # Install the public key for the repository (if not done previously):
