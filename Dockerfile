@@ -1,6 +1,7 @@
 FROM dpage/pgadmin4 as pgadmin4
 
 USER root 
+RUN apk add --update --no-cache sudo
 RUN chown 1000780000:1000780000 /pgadmin4 && \
     sed -i 's/5050/1000780000/g' /etc/passwd && \
     sed -i 's/5050/1000780000/g' /etc/group && \
