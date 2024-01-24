@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 RUN adduser user
-
+RUN apt update
 #
 # Setup the repository
 #
